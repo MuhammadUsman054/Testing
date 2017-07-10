@@ -1,0 +1,46 @@
+﻿@model List<onlineTestingService.Models.Questions>
+<div class="wrap">
+    <div class="wrapper">
+        <div class="content">
+            <div class="contact">
+                <div class="contact-left">
+                    <div class="contact-desc">
+                        <h3>Contact</h3>
+                
+
+
+   
+                        @foreach (var li in @Model)
+                        {
+                            @li.Fsc.question
+                            @li.Option.A
+                            @li.Option.B
+                            @li.Option.C
+                            @li.Option.D
+                            
+                            
+                        }
+                     </div>
+                    <form action="/Home/saveContact" method="post">
+                        
+                    </form>
+                </div>
+                <div class="sidebar-nav">
+                    <div class="contact-desc">
+                       
+                    </div>
+                    <div class="sidebar">
+                       
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

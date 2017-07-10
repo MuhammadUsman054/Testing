@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <title>Online Testing Service</title>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="~/Content/examples.css" type="text/css" media="all" />
+    <script src="~/Scripts/jquery-1.8.1.min.js"></script>
+    <script src="~/Scripts/jquery.carouFredSel-6.0.5-packed.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(function () {
+
+            $("#foo1").carouFredSel();
+            $("#foo2").carouFredSel({
+                width: 1000,
+                items: 8,
+                scroll: 4
+            });
+            $("#foo3").carouFredSel({
+                items: 1,
+                direction: "up",
+                auto: {
+                    easing: "elastic",
+                    duration: 1000,
+                    timeoutDuration: 2000,
+                    pauseOnHover: true
+                }
+            }).find(".slide").hover(
+                function () { $(this).find("div").slideDown(); },
+                function () { $(this).find("div").slideUp(); }
+            );
+        });
+    </script>
+    <script type="text/javascript" language="javascript">
+        var siteroot = "../";
+    </script>
+</head>
+<body>
+    <div class="header-bg">
+        <div class="wrap">
+            <div class="wrapper">
+                <div class="header">
+                    <div class="logo">
+                       <br><h1 >Online Testing<br />Service</h1>
+                    </div><br>
+                    <div class="menu">
+                        <ul>
+                            <li>@Html.ActionLink("Home", "index", "Home")</li>
+                            @if (Session["adminName"] == null)
+                            {
+                                <li>@Html.ActionLink("About","About","Home")</li>
+                                <li>@Html.ActionLink("Programs", "programs", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "contact", "Home")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Add", "Addition", "Home")</li>
+                                <li>@Html.ActionLink("Update", "update", "Home")</li>
+                                <li>@Html.ActionLink("Delete", "delete", "Home")</li>
+                            }
+                            
+                            @if (Session["userName"] == null && Session["adminName"] == null)
+                            { 
+                                    <li>@Html.ActionLink("Register", "Login", "Home")</li>
+                            }
+                            else if (Session["userName"] != null && Session["adminName"] == null)
+                            { 
+                                 <li>@Html.ActionLink(Session["userName"].ToString(), "profile", "Home")</li>
+                            }
+                            else
+                            {
+                                 <li>@Html.ActionLink(Session["adminName"].ToString(), "Index", "Home")</li>
+                            }
+                            @if (Session["userName"] != null || Session["adminName"] !=null)
+                            {                         
+                                <li>@Html.ActionLink("LogOut", "LogOut", "Home")</li> 
+                            }
+                            else
+                            {
+                                 <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                                
+                            }
+
+                             <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="transparent p1">
+                    <div class="wrap">
+                        <div class="html_carousel">
+                            <div id="foo3">
+                                <div class="slide">
+                                    <img src="~/Images/e1.jpg" alt="carousel 1" width="1000" height="450" />
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <body>
+        @RenderBody()
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+        <div class="footer-top">
+            <div class="wrap">
+                <div class="footer">
+                    <div class="footer-nav">
+                        <h5>>@Html.ActionLink("Home", "index", "Home")</h5>
+                       
+                        <div class="clear"></div>
+                    </div>
+                    <div class="footer-nav">
+                        <h5>>@Html.ActionLink("About", "About", "Home")</h5>
+                       
+                    </div>
+                    <div class="footer-nav">
+                        <h5>>@Html.ActionLink("Programs", "programs", "Home")</h5>
+                       
+                    </div>
+                    <div class="footer-nav">
+                        <h5>>@Html.ActionLink("Login", "Login", "Home")</h5>
+                       
+                    </div>
+                    <div class="footer-nav">
+                        <h5>>@Html.ActionLink("Contact", "contact", "Home")</h5>
+                       
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="wrap">
+                <div class="footer-text">
+                    <div class="copy">
+                        <p>&copy; 2016 ots.com All rights Reserved </p>
+                    </div>
+                   
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

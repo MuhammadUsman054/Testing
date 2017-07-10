@@ -1,0 +1,125 @@
+﻿@model List<onlineTestingService.Models.fsc> 
+
+<div class="wrap">
+    <div class="wrapper">
+        <div class="content">
+            <div class="contact">
+                <div class="contact-left">
+                    <div class="contact-desc">
+
+
+                    </div>
+                    <form action="/Home/up" method="post">
+                        <div class="contact-desc">
+                            <h3>Update Subject </h3>
+                            <div>
+                                <h3>Part</h3>
+                                <br>
+                                <select name="part">
+                                    <option value="Part1" selected>Part 1</option>
+                                    <option value="Part2">Part 2</option>
+                                </select>
+                            </div>
+                            <br>
+                            <h3>Subject</h3>
+
+                            <select name="subject1">
+                                <option value="math" selected>Mathematics</option>
+                                <option value="phy">Physics</option>
+                                <option value="chem">Chemistry</option>
+                                <option value="bio">Biology</option>
+                            </select>
+                            <br><br>
+                            <span><input type="text" placeholder="change with" name="subject" value=""></span>
+                        </div>
+                        <input type="submit" height="130" width="170" style="background-color:forestgreen" value="Update Subject">
+                    </form>
+                    <br><br>
+                    <form action="/Home/up4" method="post">
+                        <div class="contact-desc">
+                            <h3>Update Chapter</h3>
+                            <div>
+                                <h3>Part</h3>
+                                <select name="prt">
+                                    <option value="Part1" selected>Part 1</option>
+                                    <option value="Part2">Part 2</option>
+                                </select>
+                            </div>
+                            <br>
+                            <h3>Subject</h3>
+                            <br>
+                            <select name="sub">
+                                <option value="math" selected>Mathematics</option>
+                                <option value="phy">Physics</option>
+                                <option value="hem">Chemistry</option>
+                                <option value="bio">Biology</option>
+                            </select>
+                            <br>
+                            <h3>Chapter</h3>
+
+                            <select name="chapter1">
+                                <option value="1" selected>1</option>
+                                <option value="2"> 2</option>
+                                <option value="3"> 3</option>
+                                <option value="4"> 4</option>
+                                <option value="5"> 5</option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                                <option value="10"> 10</option>
+                                <option value="11"> 11</option>
+                                <option value="12"> 12</option>
+                                <option value="13"> 13</option>
+                                <option value="14"> 14</option>
+                                <option value="15"> 15</option>
+                            </select>
+                            <br><br>
+                            <span><input type="text" placeholder="changed chapter" name="chapter" value=""></span>
+                            <br>
+                            <input type="submit" height="130" width="170" style="background-color:forestgreen" value="Update Chapter">
+
+                        </div>
+                    </form>
+                    
+                </div>
+                <div class="sidebar-nav">
+                    <div>
+
+                        <table style="border:1px" >
+
+                            <tr> <td>ID</td><td>Part</td><td>Subject</td><td>Chapter</td><td>Q #</td><td>Question</td><td>Answer</td>
+                            <tr>
+                                @foreach (var li in @Model)
+                                {
+                                <tr>
+                                    <td>@li.Id</td>
+                                    <td>@li.part</td>
+                                    <td>@li.subject</td>
+                                    <td>@li.chapter</td>
+                                    <td>@li.q_id</td>
+                                    <td>@li.question</td>
+                                    <td>@li.answer</td>
+                                </tr>
+                                }
+                            </table>
+                            <div>
+                            </div>
+
+                            <div class="clear">
+                                
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+

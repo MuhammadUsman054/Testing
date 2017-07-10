@@ -1,0 +1,59 @@
+﻿
+<div class="wrap">
+    <div class="wrapper">
+        <div class="content">
+            <div class="contact">
+                <div class="contact-left">
+                    <div class="contact-desc">
+                        <h3>Profile Detail</h3>
+                        
+                    </div>
+                    <form action="/Home/updateProfile" method="post">
+                        <div>
+                            <span><label> ID </label></span>
+                            <span><input type="text" name="name" disabled="disabled" value="@Session["userId"]"></span>
+                        </div>
+                        <div>
+                            <span><label>Name</label></span>
+                            <span><input type="text" name="name" value="@Session["userN"]"></span>
+                        </div>
+                        <div>
+                            <span><label>Email</label></span>
+                            <span><input type="text" name="email" disabled="disabled" value="@Session["userName"]"></span>
+                        </div>
+                        <div>
+                            <span><label>Password</label></span>
+                            <span><input type="text" name="password" value="@Session["userPass"]"></span>
+                        </div>
+                        <div>
+                            <span><label>Mobile #</label></span>
+                            <span><input type="text" name="phone" value="@Session["userMobile"]"></span>
+                        </div>
+                        <div>
+                            <span><label>City</label></span>
+                            <span><input type="text" name="city" value="@Session["userCity"]"></span>
+                        </div>
+                        <div>
+                            <input type="submit" height="130" width="170" style="background-color:forestgreen" value="Submit">
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-nav">
+                    <div class="contact-desc">
+                        <h3></h3>
+                    </div>
+                    <div class="sidebar">
+                       
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

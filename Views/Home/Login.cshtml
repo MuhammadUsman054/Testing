@@ -1,0 +1,181 @@
+﻿<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-2.2.3.js"></script>
+@*<script>
+    function validate() {
+        var flag = true;
+        var e = document.myForm.email.value;
+        var p = document.myForm.password.value;
+        var m = document.myForm.phoneNo.value;
+
+        if (m.length < 11 || m.length > 13) {
+            alert("Please provide Valid Phone Number!");
+            flag = false;
+        }
+
+        if (p.length < 5 || p.length > 49) {
+            alert("Password Length is not Valid!");
+            flag = false;
+        }
+        
+        return flag;
+    }
+</script>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#pass").blur(function () {
+            var p = $("#pass").val();
+            if (p.length < 5 || p.length > 49) {
+                $("#showPassword").show("slow");
+                $("#send").hide("slow");
+                flag = false;
+            }
+            else
+            {
+                $("#showPassword").hide("slow");
+                $("#send").show("slow");
+            }
+        });
+
+        $("#mobile").blur(function () {
+            var m = $("#mobile").val();
+            if (m.length !== 11) {
+                $("#showMobile").show("slow");
+                $("#send").hide("slow");
+                flag = false;
+            }
+            else if (m.length === 11) {
+                $("#showMobile").hide("slow");
+                $("#send").show("slow");
+            }
+        });
+        $("#mail").blur(function () {
+            var e = $("#mail").val();
+            if (e === "")
+            {
+                alert("Email is Required");
+            }
+            var serviceURL = '/Home/check';
+
+            $.ajax({
+                type: "Post",
+                url: serviceURL,
+                data: { 'mail': e },
+                success: successFunc,
+                error: errorFunc
+            });
+
+            function successFunc(data) {
+                alert("Checking Email");
+                if (data == "0") {
+                    $("#send").show("slow");
+                    $("#showUserName").hide("slow");
+                }
+                else {
+                    $("#send").hide("slow");
+                    $("#showUserName").show("slow");
+                }
+            }
+            function errorFunc(xhr, status, err) {
+                alert('error');
+            }
+            
+        });
+    });
+</script>
+
+@*<script>
+    $(document).ready(function () {
+        $("#mail").blur(function () {
+            var e = $("#mail").val();
+            var url1 = '/Home/check';
+
+            $.ajax({
+                type: "Post",
+                url: url1,
+                data: { 'email': e },
+                success: successfunc,
+                error: errorfunc
+
+            });
+            function successfunc(data) {
+                //$("#mail").val(data);
+                $('#label').show("slow");
+                
+            }
+            function errorfunc(xhr, status, err) {
+                alert('error');
+            }
+        });
+    });
+</script>*@
+<div class="wrap">
+    <div class="wrapper">
+        <div class="content">
+            <div class="about">
+                <div class="about-top">
+                    <div class="about-left">
+                        
+                        <div class="left-desc">
+                            <h3>Sign Up</h3>
+                            <form action="/Home/Signup" method="post" >
+                                <div>
+
+                                    <span>@Html.TextBox("name", null, new { placeholder = "Name", required = "Required" })</span>
+                                </div>
+                                <div>
+                                   
+                                    <h3 id="showUserName" style="color:red;font-size:15px;display:none">Email Name Already Exist*</h3>
+                                    <span>@Html.TextBox("mail", null, new { placeholder = "Email",id="mail", required = "Required" })</span>
+                                </div>
+                                
+                                <div>
+                                    <h3 id="showPassword" style="color:red;font-size:15px;display:none">Password Length is Invalid*</h3>
+                                    <span>@Html.TextBox("pass", null, new { placeholder = "Password",id="pass", required = "Required" })</span>
+                                </div>
+                                <div>
+                                    <h3 id="showMobile" style="color:red;font-size:15px;display:none">Mobile Length is Invalid*</h3>
+                                    <span>@Html.TextBox("mobile", null, new { placeholder = "Mobile",id="mobile", required = "Required" })</span>
+                                </div>
+                                <div>
+
+                                    <span>@Html.TextBox("city", null, new { placeholder = "City", required = "Required" })</span>
+                                </div>
+                                <div>
+                                    <input type="submit" id="send" height="130" width="170" style="background-color:forestgreen" value="Register">
+                                </div>
+                            </form>
+                        </div>
+                        
+                       
+                        
+
+                    </div>
+                </div>
+                <div class="about-right">
+
+                   
+                        <h3>Login</h3>
+                    <form action="/Home/LoginMethod" method="post">
+                        <div>
+
+                            <span>@Html.TextBox("email", null, new { placeholder = "Email", required = "Required" })</span>
+                        </div>
+                        <div>
+                            
+                            <span>@Html.TextBox("password", null, new { placeholder = "Password", required = "Required" })</span>
+                            
+                        </div>
+                        <div>
+                            <input type="submit" id="send1" height="130" width="170" style="background-color:forestgreen" value="Login">
+
+                        </div>
+                    </form>
+                       
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
